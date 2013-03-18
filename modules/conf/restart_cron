@@ -1,0 +1,11 @@
+=begin
+
+Example configuration of restarting crond:
+
+$restart_process = 'name of daemon'
+$restart_action = 'command to start daemon'
+
+=end
+
+$restart_process = 'crond'
+$restart_action = '/etc/init.d/crond start'

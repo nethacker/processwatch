@@ -1,0 +1,11 @@
+=begin
+
+Example configuration of restarting sendmail:
+
+$restart_process = 'name of daemon'
+$restart_action = 'command to start daemon'
+
+=end
+
+$restart_process = 'sendmail'
+$restart_action = '/etc/init.d/sendmail start'
