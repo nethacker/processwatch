@@ -26,9 +26,11 @@ Currently Process Watch runs under a cron set to whatever time frame you like. B
 
 */5 * * * * /usr/bin/ruby /path/to/processwatch.rb
 
-FUTURE FEATURES:
+FEATURES BEING TESTED:
 
-*Detecting if a process is a run away and killing it (DONE ALPHA TESTING)
+*Detecting if a process is a run away and killing it
+
+FUTURE FEATURES:
 
 *Detecting run away disk usage and clearing space
 
