@@ -28,7 +28,7 @@ Currently Process Watch runs under a cron set to whatever time frame you like. B
 
 FUTURE FEATURES:
 
-*Detecting if a process is a run away and killing it
+*Detecting if a process is a run away and killing it (DONE ALPHA TESTING)
 
 *Detecting run away disk usage and clearing space
 

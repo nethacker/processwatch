@@ -1,5 +1,3 @@
-#License: (MIT), Copyright (C) 2013 Phil Chen.
-
 ps_list = `ps h -eo cputime,pcpu,pid,user,cmd`
 
 list = ps_list.split(/\n/)
