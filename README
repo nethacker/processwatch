@@ -28,7 +28,7 @@ Currently Process Watch runs under a cron set to whatever time frame you like. B
 
 FEATURES BEING TESTED:
 
-*Detecting if a process is a run away and killing it
+*Detecting if a process is a runaway if so notify and killing it
 
 FUTURE FEATURES:
 
