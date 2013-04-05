@@ -20,7 +20,7 @@ Process Watch is standalone package you can put it wherever you would like, and 
 
 CONFIGURATION:
 
-Process Watch configuration files exist in the modules/conf directory, and should follow the naming convention module-name_config-name
+Process Watch configuration files exist in the tasks/conf directory, and should follow the naming convention task-name_config-name
 
 Currently Process Watch runs under a cron set to whatever time frame you like. Below is an example of every 5 minutes:
 
@@ -38,7 +38,7 @@ FUTURE FEATURES:
 
 *Notification for any action taken
 
-*Added modules for scaling via api calls
+*Added tasks for scaling via api calls
 
 *Detection of Flapping Issues
 
