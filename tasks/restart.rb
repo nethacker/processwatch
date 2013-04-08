@@ -8,8 +8,11 @@ Dir[File.expand_path("#{dir}/conf/restart_*")]. uniq. each do |file|
 	load file
 
 	list = ps_list.split(/\n/)
-	if list.include?(/.*#{$restart_process}.*/) == false
+
+	occurances = list.grep(/.*#$restart_process.*/)
+	if occurances.length == 0
 
 		system $restart_action
+
 	end
 end
