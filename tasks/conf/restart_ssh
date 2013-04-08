@@ -1,2 +1,2 @@
-$restart_process = 'sshd'
+$restart_process = '/usr/sbin/sshd'
 $restart_action = '/etc/init.d/sshd start'
