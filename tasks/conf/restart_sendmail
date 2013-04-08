@@ -1,2 +1,0 @@
-$restart_process = 'sendmail'
-$restart_action = '/etc/init.d/sendmail start'
