@@ -1,6 +1,6 @@
 #CONFIGURATION KEY
 #$restart_mail = yes or no send email notifying of dead process
-#$runaway_start = yes or no start the dead process
+#$restart_start = yes or no start the dead process
 #$restart_process = name of process try to be unique, you can find the names of processes by running: ps h -eo cmd
 #$restart_action = command to start the process try to use full paths for everything
 #
