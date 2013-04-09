@@ -5,10 +5,10 @@
 #$restart_to = Name of the Email To Field
 #$restart_from_email = Email Address the Notification Comes From
 #$restart_to_email = Email Address the Notification Goes To
-
+#
 $restart_smtp_host = "127.0.0.1"
 $restart_smtp_port = "25"
-$restart_from = ""
-$restart_to = ""
-$restart_from_email = "email@here.com"
-$restart_to_email = "email@here.com"
+$restart_from = "Phil"
+$restart_to = "Phil"
+$restart_from_email = "phil@givit.com"
+$restart_to_email = "phil@givit.com"

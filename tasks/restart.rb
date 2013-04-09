@@ -1,11 +1,15 @@
-#License: (MIT), Copyright (C) 2013 Author Phil Chen.
+##License: (MIT), Copyright (C) 2013 Author Phil Chen.
 
 ps_list = `ps h -eo cmd`
 
 require 'socket'
 host = Socket.gethostname
 
+
 dir = File.dirname(__FILE__)
+
+	load File.expand_path("#{dir}/conf/general_restart_contact")
+
 Dir[File.expand_path("#{dir}/conf/restart_*")]. uniq. each do |file|
 
 	load file
