@@ -8,7 +8,9 @@ This is useful for systems issues, automating troubleshooting, provisioning, sca
 
 CURRENT FEATURES:
 
-- Seeing if a daemon/process is running and restarting it if not.
+- Seeing if a daemon/process is running and if not execute some combination of notify and starting it
+
+- Detecting if a process is a runaway if so execute some combination of notify and killing it
 
 PREREQUISITES:
 
@@ -25,10 +27,6 @@ Process Watch configuration files exist in the tasks/conf directory, and should 
 Currently Process Watch runs under a cron set to whatever time frame you like. Below is an example of every 5 minutes:
 
 */5 * * * * /usr/bin/ruby /path/to/processwatch.rb
-
-FEATURES BEING TESTED:
-
-*Detecting if a process is a runaway if so notify and killing it
 
 FUTURE FEATURES:
 
