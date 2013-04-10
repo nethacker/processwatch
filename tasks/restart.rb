@@ -62,10 +62,5 @@ END_OF_MESSAGE
 
 		system $restart_action
 
-
-	else 
-	
-	exit
-
 	end
 end
