@@ -8,13 +8,13 @@ host = Socket.gethostname
 
 dir = File.dirname(__FILE__)
 
-	load File.expand_path("#{dir}/conf/general_restart_contact")
+  load File.expand_path("#{dir}/conf/general_restart_contact")
 
 Dir[File.expand_path("#{dir}/conf/restart_*")]. uniq. each do |file|
 
-	load file
+  load file
 
-	list = ps_list.split(/\n/)
+  list = ps_list.split(/\n/)
 
 restart_msgstr = <<END_OF_MESSAGE
 From: #$restart_from <#$restart_from_email>
@@ -41,26 +41,27 @@ Process Watch has detected #{$restart_process} has died.
 END_OF_MESSAGE
 
 
-	occurances = list.grep(/.*#$restart_process.*/)
-	if occurances.length == 0 && $restart_mail == "yes" && $restart_start == "yes"
+  occurances = list.grep(/.*#$restart_process.*/)
+  if occurances.length == 0 && $restart_mail == "yes" && $restart_start == "yes"
 
-		system $restart_action
+    system $restart_action
 		
-	 	require 'net/smtp'
-		Net::SMTP.start("#$restart_smtp_host", "#$restart_smtp_port") do |smtp|
-		smtp.send_message(restart_msgstr, "#$restart_from_email", "#$restart_to_email")
-	end
+    require 'net/smtp'
+    Net::SMTP.start("#$restart_smtp_host", "#$restart_smtp_port") do |smtp|
+    smtp.send_message(restart_msgstr, "#$restart_from_email", "#$restart_to_email")
+  end
 
-	elsif occurances.length == 0 && $restart_mail == "yes" && $restart_start == "no"
+  elsif occurances.length == 0 && $restart_mail == "yes" && $restart_start == "no"
 
-		require 'net/smtp'
-		Net::SMTP.start("#$restart_smtp_host", "#$restart_smtp_port") do |smtp|
-		smtp.send_message(dead_process_msgstr, "#$restart_from_email", "#$restart_to_email")
-	end
+    require 'net/smtp'
+    Net::SMTP.start("#$restart_smtp_host", "#$restart_smtp_port") do |smtp|
+    smtp.send_message(dead_process_msgstr, "#$restart_from_email", "#$restart_to_email")
+  end
 
-	elsif occurances.length == 0 && $restart_mail == "no" && $restart_start == "yes"
+  elsif occurances.length == 0 && $restart_mail == "no" && $restart_start == "yes"
 
-		system $restart_action
+    system $restart_action
 
-	end
+  end
+
 end

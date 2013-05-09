@@ -5,18 +5,17 @@ ps_list = `ps h -eo cputime,pcpu,pid,user,cmd`
 dir = File.dirname(__FILE__)
 Dir[File.expand_path("#{dir}/conf/runaway")]. uniq. each do |file|
 
-        load file
+  load file
 
-	list = ps_list.split(/\n/)
-	list.each do |p|
-		process = p.split
-		process[0] =~ /(\d+):(\d+):(\d+)/
+  list = ps_list.split(/\n/)
+  list.each do |p|
+  process = p.split
+  process[0] =~ /(\d+):(\d+):(\d+)/
 
-		cpu_time = ($1.to_i*3600.to_i + $2.to_i*60.to_i + $3.to_i)
-		next if cpu_time.to_i < $runaway_max_time.to_i
+    cpu_time = ($1.to_i*3600.to_i + $2.to_i*60.to_i + $3.to_i)
+    next if cpu_time.to_i < $runaway_max_time.to_i
 
-
-		begin
+    begin
 
 msgstr = <<END_OF_MESSAGE
 From: #$runaway_from <#$runaway_from_email>
@@ -27,37 +26,39 @@ Subject: Runaway Process Detected
 
 END_OF_MESSAGE
 
-		if $runaway_mail == "yes" && $runaway_kill == "yes"
+    if $runaway_mail == "yes" && $runaway_kill == "yes"
 
-			require 'net/smtp'
-			Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
-			smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
+      require 'net/smtp'
+      Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
+      smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
 
-			system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")
+      system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")
 
-		end
+    end
 
-		elsif $runaway_mail == "yes" && $runaway_kill == "no"
+    elsif $runaway_mail == "yes" && $runaway_kill == "no"
 
-			require 'net/smtp'
-			Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
-			smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
+      require 'net/smtp'
+      Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
+      smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
 
-		end
+    end
 
-		elsif $runaway_mail == "no" && $runaway_kill == "yes"
+    elsif $runaway_mail == "no" && $runaway_kill == "yes"
 
-			system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")
+      system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")
 
-		else
-			exit
+    else
 
-		end
+      exit
 
-		rescue
-			puts "Error Killing the process"
-			retry
-		end
+    end
 
-	end
+    rescue
+      puts "Error Killing the process"
+      retry
+    end
+
+  end
+
 end
