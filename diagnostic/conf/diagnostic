@@ -1,0 +1,31 @@
+#CONFIGURATION KEY
+# Diagnostic task helps provide you info when some other task is triggered,
+# it runs typically before the event has had action taken on it.
+#
+##$diagnostic_status = on or off to enable or disable diagnostic globally
+#$diagnostic_netstat_listen = This provides listening port info
+#$diagnostic_netstat = This provides connection info
+#$diagnostic_ps = This provides process list info
+#$diagnostic_pstree = This provides process forking info
+#$diagnostic_df = This provides disk info
+#$diagnostic_lsof = This provides process to file info
+#$diagnostic_top = This provides system and process info
+#$diagnostic_system_log = This provides the last 50 lines of the system log 
+#$diagnostic_custom_name_1 = This is the name for a custom check defined by you
+#$diagnostic_custom_1 = This is the command for a custom check defined by you make sure you use back ticks
+#$diagnostic_custom_name_2 = This is the name for a custom check defined by you
+#$diagnostic_custom_2 = This is the command for a custom check defined by you make sure you use back ticks
+#
+$diagnostic_status = "off"
+$diagnostic_netstat_listen = `netstat -luntp`
+$diagnostic_netstat = `netstat -an`
+$diagnostic_ps = `ps aux`
+$diagnostic_pstree = `pstree -a`
+$diagnostic_df = `df -h`
+$diagnostic_lsof = `lsof`
+$diagnostic_top = `top -n 2 -b`
+$diagnostic_system_log = `tail -50 /var/log/messages`
+$diagnostic_custom_name_1 = "Custom 1"
+$diagnostic_custom_1 = `echo no-data`
+$diagnostic_custom_name_2 = "Custom 2"
+$diagnostic_custom_2 = `echo no-data`

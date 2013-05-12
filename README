@@ -12,6 +12,8 @@ CURRENT FEATURES:
 
 - Detecting if a process is a runaway if so execute some combination of notify and killing it
 
+- Run diagnostics and store the info of the state of the server when tasks see events 
+
 PREREQUISITES:
 
 LINUX, RUBY, CRON (Or some other scheduler)
@@ -31,10 +33,6 @@ Currently Process Watch runs under a cron set to whatever time frame you like. B
 FUTURE FEATURES:
 
 *Detecting run away disk usage and clearing space
-
-*When a anomaly is detected gather system diagnostics at the time of incident and store them for review
-
-*Notification for any action taken
 
 *Added tasks for scaling via api calls
 

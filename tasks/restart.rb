@@ -43,7 +43,9 @@ END_OF_MESSAGE
 
   occurances = list.grep(/.*#$restart_process.*/)
   if occurances.length == 0 && $restart_mail == "yes" && $restart_start == "yes"
-
+    
+    load File.expand_path("#{dir}/diagnostic/diagnostic.rb")
+    
     system $restart_action
 		
     require 'net/smtp'
@@ -53,12 +55,16 @@ END_OF_MESSAGE
 
   elsif occurances.length == 0 && $restart_mail == "yes" && $restart_start == "no"
 
+    load File.expand_path("#{dir}/diagnostic/diagnostic.rb")
+
     require 'net/smtp'
     Net::SMTP.start("#$restart_smtp_host", "#$restart_smtp_port") do |smtp|
     smtp.send_message(dead_process_msgstr, "#$restart_from_email", "#$restart_to_email")
   end
 
   elsif occurances.length == 0 && $restart_mail == "no" && $restart_start == "yes"
+
+    load File.expand_path("#{dir}/diagnostic/diagnostic.rb")
 
     system $restart_action
 

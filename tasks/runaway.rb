@@ -28,6 +28,8 @@ END_OF_MESSAGE
 
     if $runaway_mail == "yes" && $runaway_kill == "yes"
 
+      load File.expand_path("#{dir}/diagnostic/diagnostic.rb")
+
       require 'net/smtp'
       Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
       smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
@@ -38,6 +40,8 @@ END_OF_MESSAGE
 
     elsif $runaway_mail == "yes" && $runaway_kill == "no"
 
+      load File.expand_path("#{dir}/diagnostic/diagnostic.rb")
+
       require 'net/smtp'
       Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
       smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
@@ -45,6 +49,8 @@ END_OF_MESSAGE
     end
 
     elsif $runaway_mail == "no" && $runaway_kill == "yes"
+
+      load File.expand_path("#{dir}/diagnostic/diagnostic.rb")
 
       system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")
 

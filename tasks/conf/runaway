@@ -9,7 +9,7 @@
 #$runaway_mail = yes or no send email notifying the runaway process
 #$runaway_kill = yes or no kill the runaway process **NOTE BE CAREFUL THIS WILL KILL THE PROCESS
 
-$runaway_max_time = "3600"
+$runaway_max_time = "600000"
 $runaway_smtp_host = "127.0.0.1"
 $runaway_smtp_port = "25"
 $runaway_from = ""
