@@ -1,7 +1,5 @@
 #License: (MIT), Copyright (C) 2013 Process Watch Author Phil Chen.
 
-require "processwatch/version"
-
 module Processwatch
 
   def restart

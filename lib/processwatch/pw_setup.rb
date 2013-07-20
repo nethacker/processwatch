@@ -1,7 +1,5 @@
 #License: (MIT), Copyright (C) 2013 Process Watch Author Phil Chen.
 
-require "processwatch/version"
-
 module Processwatch_setup
 
   def setup
@@ -76,7 +74,7 @@ END_OF_MESSAGE
 pw = <<END_OF_MESSAGE
 #!/usr/bin/ruby
 
-require 'pw_linux'
+require 'processwatch'
 
   include Processwatch
 
