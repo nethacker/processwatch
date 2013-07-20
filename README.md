@@ -20,7 +20,9 @@ This is useful for systems issues, automating troubleshooting, provisioning, sca
 
 ## INSTALLATION: 
 
-  $ gem install processwatch
+```bash
+$ gem install processwatch
+```
 
 Create a file setup.rb
 
