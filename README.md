@@ -27,7 +27,7 @@ $ gem install processwatch
 Create a file setup.rb
 
 ```ruby
-require 'pw_setup'
+require 'processwatch'
   include Processwatch_setup
     setup
 ```
