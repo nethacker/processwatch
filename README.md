@@ -22,12 +22,18 @@ This is useful for systems issues, automating troubleshooting, provisioning, sca
 
   $ gem install processwatch
 
-Create setup.rb
+Create a file setup.rb
 
 ```ruby
 require 'pw_setup'
   include Processwatch_setup
     setup
+```
+
+Run the setup.rb
+
+```bash
+ruby setup.rb
 ```
 
 ## CONFIGURATION:
@@ -37,7 +43,7 @@ Configure the configuration files locate in /usr/local/processwatch/conf/
 Note you can have multiple services monitored for restart.
 Sample restart configuration file begins with prefix restart_ naming convention looks like restart_uniqueappname
 
-## RUNNING PROCESSWATCH:
+## USING PROCESSWATCH:
 
 The processwatch executable is /usr/local/processwatch/processwatch.rb you will want to set it on a cron like:
 
