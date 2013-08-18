@@ -1,4 +1,4 @@
-# Processwatch
+# Process Watch
 
 License: (MIT) Copyright (C) 2013 Phil Chen.
 
@@ -13,6 +13,8 @@ This is useful for systems issues, automating troubleshooting, provisioning, sca
   Seeing if a daemon/process is running and if not execute some combination of notify and starting it
 
   Detecting if a process is a runaway if so execute some combination of notify and killing it
+
+  Email system utilization statistics in the state prior to correcting the runaway process or starting a dead one
 
 ## PREREQUISITES:
 

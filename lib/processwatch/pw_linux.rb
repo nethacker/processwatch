@@ -19,19 +19,19 @@ module Processwatch
     if occurances.length == 0 && $restart_mail == "yes" && $restart_start == "yes"
       usw =  Usagewatch
 diagnostic_msgstr = <<END_OF_MESSAGE
-#{usw.uw_diskused} Total Gigabytes Disk Used
-#{usw.uw_diskused_perc} Percentage of Gigabytes Used
-#{usw.uw_cpuused}% CPU Used
-#{usw.uw_tcpused} TCP Connections Used
-#{usw.uw_udpused} UDP Connections Used
-#{usw.uw_memused}% Active Memory Used
-#{usw.uw_load} Average System Load Of The Past Minute
-#{usw.uw_bandrx} Mbit/s Current Bandwidth Received
-#{usw.uw_bandtx} Mbit/s Current Bandwidth Transmitted
-#{usw.uw_diskioreads}/s Current Disk Reads Completed
-#{usw.uw_diskiowrites}/s Current Disk Writes Completed
-Top Ten Processes By CPU Consumption: #{usw.uw_cputop}
-Top Ten Processes By Memory Consumption: #{usw.uw_memtop}
+ #{usw.uw_diskused} Total Gigabytes Disk Used
+ #{usw.uw_diskused_perc} Percentage of Gigabytes Used
+ #{usw.uw_cpuused}% CPU Used
+ #{usw.uw_tcpused} TCP Connections Used
+ #{usw.uw_udpused} UDP Connections Used
+ #{usw.uw_memused}% Active Memory Used
+ #{usw.uw_load} Average System Load Of The Past Minute
+ #{usw.uw_bandrx} Mbit/s Current Bandwidth Received
+ #{usw.uw_bandtx} Mbit/s Current Bandwidth Transmitted
+ #{usw.uw_diskioreads}/s Current Disk Reads Completed
+ #{usw.uw_diskiowrites}/s Current Disk Writes Completed
+ Top Ten Processes By CPU Consumption: #{usw.uw_cputop}
+ Top Ten Processes By Memory Consumption: #{usw.uw_memtop}
 END_OF_MESSAGE
 
 restart_msgstr = <<END_OF_MESSAGE
@@ -58,19 +58,19 @@ END_OF_MESSAGE
     elsif occurances.length == 0 && $restart_mail == "yes" && $restart_start == "no"
       usw =  Usagewatch
 diagnostic_msgstr = <<END_OF_MESSAGE
-#{usw.uw_diskused} Total Gigabytes Disk Used
-#{usw.uw_diskused_perc} Percentage of Gigabytes Used
-#{usw.uw_cpuused}% CPU Used
-#{usw.uw_tcpused} TCP Connections Used
-#{usw.uw_udpused} UDP Connections Used
-#{usw.uw_memused}% Active Memory Used
-#{usw.uw_load} Average System Load Of The Past Minute
-#{usw.uw_bandrx} Mbit/s Current Bandwidth Received
-#{usw.uw_bandtx} Mbit/s Current Bandwidth Transmitted
-#{usw.uw_diskioreads}/s Current Disk Reads Completed
-#{usw.uw_diskiowrites}/s Current Disk Writes Completed
-Top Ten Processes By CPU Consumption: #{usw.uw_cputop}
-Top Ten Processes By Memory Consumption: #{usw.uw_memtop}
+ #{usw.uw_diskused} Total Gigabytes Disk Used
+ #{usw.uw_diskused_perc} Percentage of Gigabytes Used
+ #{usw.uw_cpuused}% CPU Used
+ #{usw.uw_tcpused} TCP Connections Used
+ #{usw.uw_udpused} UDP Connections Used
+ #{usw.uw_memused}% Active Memory Used
+ #{usw.uw_load} Average System Load Of The Past Minute
+ #{usw.uw_bandrx} Mbit/s Current Bandwidth Received
+ #{usw.uw_bandtx} Mbit/s Current Bandwidth Transmitted
+ #{usw.uw_diskioreads}/s Current Disk Reads Completed
+ #{usw.uw_diskiowrites}/s Current Disk Writes Completed
+ Top Ten Processes By CPU Consumption: #{usw.uw_cputop}
+ Top Ten Processes By Memory Consumption: #{usw.uw_memtop}
 END_OF_MESSAGE
 
 dead_process_msgstr = <<END_OF_MESSAGE
@@ -114,26 +114,80 @@ end
       cpu_time = ($1.to_i*3600.to_i + $2.to_i*60.to_i + $3.to_i)
     next if cpu_time.to_i < $runaway_max_time.to_i
     begin
+        if $runaway_mail == "yes" && $runaway_kill == "yes"
+          usw =  Usagewatch
+diagnostic_msgstr = <<END_OF_MESSAGE
+ #{usw.uw_diskused} Total Gigabytes Disk Used
+ #{usw.uw_diskused_perc} Percentage of Gigabytes Used
+ #{usw.uw_cpuused}% CPU Used
+ #{usw.uw_tcpused} TCP Connections Used
+ #{usw.uw_udpused} UDP Connections Used
+ #{usw.uw_memused}% Active Memory Used
+ #{usw.uw_load} Average System Load Of The Past Minute
+ #{usw.uw_bandrx} Mbit/s Current Bandwidth Received
+ #{usw.uw_bandtx} Mbit/s Current Bandwidth Transmitted
+ #{usw.uw_diskioreads}/s Current Disk Reads Completed
+ #{usw.uw_diskiowrites}/s Current Disk Writes Completed
+ Top Ten Processes By CPU Consumption: #{usw.uw_cputop}
+ Top Ten Processes By Memory Consumption: #{usw.uw_memtop}
+END_OF_MESSAGE
 
-msgstr = <<END_OF_MESSAGE
+kill_msgstr = <<END_OF_MESSAGE
 From: #$runaway_from <#$runaway_from_email>
 To: #$runaway_to <#$runaway_to_email>
 Subject: Runaway Process Detected
 
+The Below Runaway Process Has Been Detected
+
 #{process[4]}
 
+It has been killed!
+
+Below Is A Snapshot Of The System Statistics Before It Was Killed
+
+#{diagnostic_msgstr}
 END_OF_MESSAGE
 
-        if $runaway_mail == "yes" && $runaway_kill == "yes"
           require 'net/smtp'
           Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
-          smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
+          smtp.send_message(kill_msgstr, "#$runaway_from_email", "#$runaway_to_email")
             system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")
         end
         elsif $runaway_mail == "yes" && $runaway_kill == "no"
+          usw =  Usagewatch
+diagnostic_msgstr = <<END_OF_MESSAGE
+ #{usw.uw_diskused} Total Gigabytes Disk Used
+ #{usw.uw_diskused_perc} Percentage of Gigabytes Used
+ #{usw.uw_cpuused}% CPU Used
+ #{usw.uw_tcpused} TCP Connections Used
+ #{usw.uw_udpused} UDP Connections Used
+ #{usw.uw_memused}% Active Memory Used
+ #{usw.uw_load} Average System Load Of The Past Minute
+ #{usw.uw_bandrx} Mbit/s Current Bandwidth Received
+ #{usw.uw_bandtx} Mbit/s Current Bandwidth Transmitted
+ #{usw.uw_diskioreads}/s Current Disk Reads Completed
+ #{usw.uw_diskiowrites}/s Current Disk Writes Completed
+ Top Ten Processes By CPU Consumption: #{usw.uw_cputop}
+ Top Ten Processes By Memory Consumption: #{usw.uw_memtop}
+END_OF_MESSAGE
+
+no_kill_msgstr = <<END_OF_MESSAGE
+From: #$runaway_from <#$runaway_from_email>
+To: #$runaway_to <#$runaway_to_email>
+Subject: Runaway Process Detected
+
+The Below Runaway Process Has Been Detected
+
+#{process[4]}
+
+Below Is A Snapshot Of Current System Statistics
+
+#{diagnostic_msgstr}
+END_OF_MESSAGE
+
           require 'net/smtp'
           Net::SMTP.start("#$runaway_smtp_host", "#$runaway_smtp_port") do |smtp|
-          smtp.send_message(msgstr, "#$runaway_from_email", "#$runaway_to_email")
+          smtp.send_message(no_kill_msgstr, "#$runaway_from_email", "#$runaway_to_email")
         end
         elsif $runaway_mail == "no" && $runaway_kill == "yes"
           system("/bin/kill" + " " + "-9" + " " + "#{process[2]}")

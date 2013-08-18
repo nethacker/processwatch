@@ -1,0 +1,9 @@
+License: (MIT) Copyright (C) 2013 Process Watch Author Phil Chen.
+
+3.0.9 Aug 18 2013
+====
+* Added system utilization statistics for when a process issue is detected prior to correction
+
+3.0.8 July 19 2013
+====
+* Converted Process Watch a Ruby Gem
