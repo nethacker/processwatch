@@ -1,3 +1,4 @@
+#License: (MIT), Copyright (C) 2013 Process Watch Author Phil Chen.
 module Usagewatch
   # Show the amount of total disk used in Gigabytes
   def self.uw_diskused

@@ -45,7 +45,8 @@ ruby setup.rb
 Configure the configuration files locate in /usr/local/processwatch/conf/
 
 Note you can have multiple services monitored for restart.
-Sample restart configuration file begins with prefix restart_ naming convention looks like restart_uniqueappname
+See example restart configuration file restart_ssh
+You can add more restart processes with the naming convention restart_uniqueappname (note prefix restart_)
 
 ## USING PROCESSWATCH:
 
