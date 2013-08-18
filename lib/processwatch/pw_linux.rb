@@ -46,7 +46,7 @@ END_OF_MESSAGE
     occurances = list.grep(/.*#$restart_process.*/)
     if occurances.length == 0 && $restart_mail == "yes" && $restart_start == "yes"
       usw =  Usagewatch
-diagnostic_msgstr = << END_OF_MESSAGE
+diagnostic_msgstr = <<END_OF_MESSAGE
 - #{usw.uw_diskused} Gigabytes Used
 - #{usw.uw_diskused_perc} Perventage of Gigabytes Used
 - #{usw.uw_cpuused}% CPU Used
@@ -68,7 +68,7 @@ END_OF_MESSAGE
     end
     elsif occurances.length == 0 && $restart_mail == "yes" && $restart_start == "no"
       usw =  Usagewatch
-diagnostic_msgstr = << END_OF_MESSAGE
+diagnostic_msgstr = <<END_OF_MESSAGE
 - #{usw.uw_diskused} Gigabytes Used
 - #{usw.uw_diskused_perc} Perventage of Gigabytes Used
 - #{usw.uw_cpuused}% CPU Used
