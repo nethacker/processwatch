@@ -20,9 +20,11 @@ This is useful for systems issues, automating troubleshooting, provisioning, sca
 
   Linux, Ruby, Cron (Or some other scheduler)
   
+  ```bash
   Tested with:
   ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-linux]
   ruby 1.9.3p429 (2013-05-15) [x86_64-linux]
+  ```
 
 ## INSTALLATION: 
 
