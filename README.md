@@ -18,12 +18,14 @@ This is useful for systems issues, automating troubleshooting, provisioning, sca
 
 ## PREREQUISITES:
 
-  Linux, Ruby, Cron (Or some other scheduler)
+  Linux, Ruby, RubyGems Cron (Or some other scheduler)
 
   Tested with:  
   ```bash
   ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-linux]
   ruby 1.9.3p429 (2013-05-15) [x86_64-linux]
+  rubygems version 1.8.23
+  rubygems version 2.0.3
   ```
 
 ## INSTALLATION: 
