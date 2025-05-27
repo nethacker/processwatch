@@ -2,6 +2,9 @@
 
 License: (MIT) Copyright (C) 2013 Phil Chen.
 
+## THIS PROJECT HAS MOVED TO: https://github.com/systemswatch/process-watch
+Repository is no longer maintained.
+
 ## DESCRIPTION:
 
 Process Watch monitors processes and workflows in your Linux system for anomalies or situations which when arise trigger predetermined actions you designate.
