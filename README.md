@@ -2,8 +2,10 @@
 
 License: (MIT) Copyright (C) 2013 Phil Chen.
 
-## THIS PROJECT HAS MOVED TO: https://github.com/systemswatch/process-watch
-Repository is no longer maintained.
+## THIS PROJECT HAS MOVED TO:
+### https://github.com/systemswatch/process-watch
+
+This project is no longer maintained here please visit the above link for the new Process Watch
 
 ## DESCRIPTION:
 
